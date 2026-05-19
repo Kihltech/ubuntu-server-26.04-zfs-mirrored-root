@@ -508,12 +508,12 @@ EFI_LABEL_DISK2="Ubuntu 26.04 LTS - $NEW_HOSTNAME (mirror)"
 BOOT_DISK1=$(efibootmgr --create --disk "$DISK1" --part 1 \
     --label "$EFI_LABEL_DISK1" \
     --loader '\EFI\ubuntu\shimx64.efi' \
-    | awk '/^BootOrder:/{print $2; exit}' | cut -d, -f1)
+    | awk '/^BootOrder:/{print $2}' | cut -d, -f1)
 
 BOOT_DISK2=$(efibootmgr --create --disk "$DISK2" --part 1 \
     --label "$EFI_LABEL_DISK2" \
     --loader '\EFI\ubuntu\shimx64.efi' \
-    | awk '/^BootOrder:/{print $2; exit}' | cut -d, -f1)
+    | awk '/^BootOrder:/{print $2}' | cut -d, -f1)
 
 info "  EFI entries: Boot${BOOT_DISK1} (disk1), Boot${BOOT_DISK2} (disk2)"
 

@@ -546,11 +546,11 @@ this installer on the same machine:
 B1=$(efibootmgr --create --disk "$DISK1" --part 1 \
         --label "Ubuntu 26.04 LTS - $HOST" \
         --loader '\EFI\ubuntu\shimx64.efi' \
-        | awk '/^BootOrder:/{print $2; exit}' | cut -d, -f1)
+        | awk '/^BootOrder:/{print $2}' | cut -d, -f1)
 B2=$(efibootmgr --create --disk "$DISK2" --part 1 \
         --label "Ubuntu 26.04 LTS - $HOST (mirror)" \
         --loader '\EFI\ubuntu\shimx64.efi' \
-        | awk '/^BootOrder:/{print $2; exit}' | cut -d, -f1)
+        | awk '/^BootOrder:/{print $2}' | cut -d, -f1)
 ```
 
 Boot order: disk 1, then disk 2, then everything else (USB, firmware
