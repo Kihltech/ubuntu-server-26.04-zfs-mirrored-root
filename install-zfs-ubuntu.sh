@@ -417,7 +417,7 @@ echo "${USERNAME}:${USER_PASSWORD_HASH}" | chpasswd -e
 # /home/$USERNAME pre-exists as its own ZFS dataset, so useradd -m skips
 # /etc/skel. Copy it ourselves with --no-clobber so anything we wrote
 # earlier (notably .ssh/authorized_keys) is preserved.
-cp -an /etc/skel/. "/home/${USERNAME}/"
+cp -a --update=none /etc/skel/. "/home/${USERNAME}/"
 chown -R "${USERNAME}:${USERNAME}" "/home/${USERNAME}"
 passwd -l root
 

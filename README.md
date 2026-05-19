@@ -402,7 +402,7 @@ copying `/etc/skel`. We copy it manually with `--no-clobber` so the
 ```sh
 useradd -m -s /bin/bash -G sudo,adm "$USER"
 echo "${USER}:${PWHASH}" | chpasswd -e
-cp -an /etc/skel/. "/home/${USER}/"
+cp -a --update=none /etc/skel/. "/home/${USER}/"
 chown -R "${USER}:${USER}" "/home/${USER}"
 passwd -l root
 ```
